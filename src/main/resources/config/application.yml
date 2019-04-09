@@ -1,0 +1,55 @@
+app:
+  base-package: com.example.neo4j
+server:
+  port: 9070
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: demo-spring-data-neo4j
+  data:
+    neo4j:
+      uri: bolt://192.168.199.165:7474
+      username: neo4j
+      password: wlb1234
+
+  pid:
+    file: ${spring.application.name}.pid
+    fail-on-write-error: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 50MB
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+    favicon:
+      enabled: true
+    view:
+      prefix: /templates/
+      suffix: .ftl
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /**
+  freemarker:
+    allow-request-override: true
+    charset: UTF-8
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    request-context-attribute: request
+    allow-session-override: true
+    settings: {"number_format": "0.##"}
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  resources:
+    add-mappings: true
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
